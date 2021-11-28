@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: miw-customer-gateway
+  labels:
+    run: miw-customer-gateway
+spec:
+  type: NodePort
+  clusterIP: None
+  ports:
+  - port: 80
+    nodePort: 5002
+    protocol: TCP
+  selector:
+    run: customer-gateway
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: customer-gateway
+spec:
+  selector:
+    matchLabels:
+      run: customer-gateway
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: customer-gateway
+    spec:
+      containers:
+      - name: customer-gateway
+        image: lars14/miw-customergateway0.0.4:release0.0.4
+        ports:
+        - containerPort: 80
