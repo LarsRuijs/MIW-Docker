@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: miw-recommendations-service
+  labels:
+    run: miw-recommendations-service
+spec:
+  type: NodePort
+  clusterIP: None
+  ports:
+  - port: 80
+    nodePort: 5012
+    protocol: TCP
+  selector:
+    run: recommendations-service
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: recommendations-service
+spec:
+  selector:
+    matchLabels:
+      run: recommendations-service
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: recommendations-service
+    spec:
+      containers:
+      - name: recommendations-service
+        image: lars14/miw-recommendationsservice0.0.1:release0.0.1
+        ports:
+        - containerPort: 80
