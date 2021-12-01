@@ -30,6 +30,6 @@ spec:
     spec:
       containers:
       - name: customer-webapp
-        image: lars14/music-instruments-webshop-test:release0.0.1
+        image: lars14/miw-customerwebapp:release0.0.7
         ports:
         - containerPort: 80
