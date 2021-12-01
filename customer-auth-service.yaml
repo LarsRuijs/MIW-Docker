@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: miw-customer-auth-service
+  labels:
+    run: miw-customer-auth-service
+spec:
+  type: NodePort
+  clusterIP: None
+  ports:
+  - port: 80
+    nodePort: 5004
+    protocol: TCP
+  selector:
+    run: customer-auth-service
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: customer-auth-service
+spec:
+  selector:
+    matchLabels:
+      run: customer-auth-service
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: customer-auth-service
+    spec:
+      containers:
+      - name: customer-auth-service
+        image: lars14/miw-customerauthservice0.0.3:release0.0.3
+        ports:
+        - containerPort: 80
