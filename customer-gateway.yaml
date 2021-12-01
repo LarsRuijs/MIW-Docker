@@ -30,6 +30,6 @@ spec:
     spec:
       containers:
       - name: customer-gateway
-        image: lars14/miw-customergateway0.0.8:release0.0.8
+        image: lars14/miw-customergateway:release0.0.8
         ports:
         - containerPort: 80
