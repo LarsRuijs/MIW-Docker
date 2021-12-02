@@ -30,6 +30,6 @@ spec:
     spec:
       containers:
       - name: recommendations-service
-        image: lars14/miw-recommendationsservice:release0.0.1
+        image: lars14/miw-recommendationsservice:release0.0.2
         ports:
         - containerPort: 80
