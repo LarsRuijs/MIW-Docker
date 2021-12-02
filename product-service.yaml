@@ -30,6 +30,6 @@ spec:
     spec:
       containers:
       - name: product-service
-        image: lars14/miw-productservice0.0.1:release0.0.1
+        image: lars14/miw-productservice:release0.0.1
         ports:
         - containerPort: 80
