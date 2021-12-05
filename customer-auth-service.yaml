@@ -30,6 +30,6 @@ spec:
     spec:
       containers:
       - name: customer-auth-service
-        image: lars14/miw-customerauthservice:release0.0.3
+        image: lars14/miw-customerauthservice:release0.0.4
         ports:
         - containerPort: 80
